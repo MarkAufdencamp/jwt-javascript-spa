@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/* CSS Document */
+h1 {
+	text-align: center;
+}
+h2 {
+	text-align: center;
+	clear: none;
+}
+.menu-row{
+	clear: both;
+}
+.menu-item {
+	width: 50%;
+	float:left;
+	clear:none;
+}
+.menu-button {
+	width:100%;
+	float: left;
+}
