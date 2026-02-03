@@ -28,8 +28,8 @@ loginForm.addEventListener('submit', async (e) => {
 
     // On success, you'd typically save the token and redirect
     // For this example, we'll just display a success message
-    console.log('Received token:', data.token);
-    localStorage.setItem("jwt", data.token);
+    console.log('Received token:', data.jwt);
+    localStorage.setItem("jwt", data.jwt);
     message.style.color = 'green';
     message.textContent = 'Login successful! Token is in the console.';
 	  window.open("mainmenu.html", "_self");
