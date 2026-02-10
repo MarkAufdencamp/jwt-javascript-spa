@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Authentication & Configuration ---
     const jwt = localStorage.getItem('jwt');
     if (!jwt) {
-        window.location.href = 'index.html';
+        window.open('index.html', '_self');
         return;
     }
 
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle logout
     const logout = () => {
         localStorage.removeItem('jwt');
-        window.location.href = 'index.html';
+        window.open('index.html', '_self');
     };
 
     logoutBtn.addEventListener('click', logout);
