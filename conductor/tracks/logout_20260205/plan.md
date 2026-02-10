@@ -17,9 +17,9 @@ This plan follows the Test-Driven Development (TDD) process as outlined in `cond
 
 ---
 
-## Phase 2: Final Cleanup & Verification
+## Phase 2: Final Cleanup & Verification [checkpoint: 7416ca6]
 
 - [x] **Task: Verify logout across all views** [e86ce65]
-    - [ ] Audit all HTML files to ensure a consistent logout button is present.
-    - [ ] Ensure `aboutme.html` also has functional logout logic if it uses JS.
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2: Final Polish' (Protocol in workflow.md)**
+    - [x] Audit all HTML files to ensure a consistent logout button is present.
+    - [x] Ensure `aboutme.html` also has functional logout logic if it uses JS.
+- [x] **Task: Conductor - User Manual Verification 'Phase 2: Final Polish' (Protocol in workflow.md)**
