@@ -7,7 +7,7 @@ This plan follows the Test-Driven Development (TDD) process as outlined in `cond
 - [x] **Task: Implement logout logic in `mainmenu.js`** [3b410b4]
     - [ ] Write unit tests to verify `localStorage.removeItem('jwt')` is called and navigation to `index.html` is triggered.
     - [ ] Implement the logout event listener in `mainmenu.js`.
-- [ ] **Task: Add logout button and logic to `accounts.js`**
+- [x] **Task: Add logout button and logic to `accounts.js`** [9c1c2f6]
     - [ ] Write unit tests for logout functionality in `accounts.js`.
     - [ ] Update `accounts.html` with a logout button (if not present) and `accounts.js` with the event listener.
 - [ ] **Task: Add logout button and logic to `domains.js`**
