@@ -74,10 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
     domainForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const id = domainIdInput.value;
-        const domainData = {
+        const domainData = {domain: {
             domain: domainInput.value.trim(),
             tld: tldInput.value.trim()
-        };
+        }};
 
         const isUpdating = !!id;
         const url = isUpdating ? `${API_URL}/${id}` : API_URL;
