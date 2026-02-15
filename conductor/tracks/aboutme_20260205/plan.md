@@ -2,7 +2,7 @@
 
 This plan follows the Test-Driven Development (TDD) process as outlined in `conductor/workflow.md`.
 
-## Phase 1: API Integration and Data Rendering
+## Phase 1: API Integration and Data Rendering [checkpoint: db8aecf]
 
 - [x] Task: Setup basic HTML structure for profile display in `aboutme.html` 9e532de
     - [ ] Add container elements with IDs for `profile-id`, `profile-username`, and `profile-email`.
