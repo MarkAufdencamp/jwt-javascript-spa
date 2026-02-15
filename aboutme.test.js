@@ -27,4 +27,11 @@ describe('aboutme.js', () => {
     expect(localStorage.getItem('jwt')).toBeNull();
     expect(window.open).toHaveBeenCalledWith('index.html', '_self');
   });
+
+  test('Required profile display elements exist in the DOM', () => {
+    expect(document.getElementById('profile-id')).not.toBeNull();
+    expect(document.getElementById('profile-username')).not.toBeNull();
+    expect(document.getElementById('profile-email')).not.toBeNull();
+    expect(document.getElementById('profile-error')).not.toBeNull();
+  });
 });
