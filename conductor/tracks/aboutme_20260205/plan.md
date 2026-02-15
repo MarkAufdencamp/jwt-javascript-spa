@@ -16,7 +16,7 @@ This plan follows the Test-Driven Development (TDD) process as outlined in `cond
         -   Add logic to `aboutme.js` to retrieve JWT from `localStorage`.
         -   Perform `fetch` to `http://localhost:3000/profile`.
         -   Update the DOM elements based on the response.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Profile Display' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Profile Display' (Protocol in workflow.md)
 
 ---
 
