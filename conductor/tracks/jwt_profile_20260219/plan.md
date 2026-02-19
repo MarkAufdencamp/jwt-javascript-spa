@@ -18,10 +18,10 @@ This plan outlines the steps to add a JWT display card and copy-to-clipboard fun
 - [ ] Task: Conductor - User Manual Verification 'HTML/CSS Enhancements' (Protocol in workflow.md)
 
 ## Phase 3: JavaScript Implementation (TDD)
-- [ ] Task: Write failing tests for JWT retrieval and display
+- [x] Task: Write failing tests for JWT retrieval and display a6c1ccf
     - [ ] Test that `localStorage.getItem('jwt')` is called
     - [ ] Test that the JWT is rendered in the DOM
-- [ ] Task: Implement `displayJWT()` function in `aboutme.js`
+- [x] Task: Implement `displayJWT()` function in `aboutme.js` a6c1ccf
     - [ ] Retrieve JWT from `localStorage`
     - [ ] Update the DOM element with the token string
 - [ ] Task: Write failing tests for Copy to Clipboard functionality
