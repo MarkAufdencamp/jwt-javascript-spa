@@ -35,6 +35,15 @@ describe('aboutme.js', () => {
     expect(document.getElementById('profile-error')).not.toBeNull();
   });
 
+  test('JWT display card elements exist in the DOM', () => {
+    expect(document.getElementById('jwt-section')).not.toBeNull();
+    const jwtTitle = document.querySelector('#jwt-section .card-title');
+    expect(jwtTitle).not.toBeNull();
+    expect(jwtTitle.textContent).toBe('Your Authentication Token (JWT)');
+    expect(document.getElementById('jwt-display')).not.toBeNull();
+    expect(document.getElementById('copy-jwt-btn')).not.toBeNull();
+  });
+
   test('Fetches profile data and updates DOM on success', async () => {
     // Setup
     const mockProfile = {
