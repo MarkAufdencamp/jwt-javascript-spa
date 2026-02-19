@@ -7,6 +7,7 @@ const script = fs.readFileSync(path.resolve(__dirname, 'aboutme.js'), 'utf8');
 describe('aboutme.js', () => {
   beforeEach(() => {
     document.documentElement.innerHTML = html.toString();
+    jest.useRealTimers();
     jest.resetModules();
   });
 
@@ -15,7 +16,7 @@ describe('aboutme.js', () => {
     localStorage.setItem('jwt', 'fake-token');
     
     // Execute script
-    eval(script);
+    eval(`(function(){ ${script} })()`);
 
     // Find the button
     const logoutBtn = document.getElementById('logout-btn');
@@ -50,7 +51,7 @@ describe('aboutme.js', () => {
     localStorage.setItem('jwt', testToken);
     
     // Execute script
-    eval(script);
+    eval(`(function(){ ${script} })()`);
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     // Wait for async operations (if any, though displayJWT might be sync)
@@ -59,6 +60,47 @@ describe('aboutme.js', () => {
     // Assertions
     const jwtDisplay = document.getElementById('jwt-display');
     expect(jwtDisplay.textContent).toBe(testToken);
+  });
+
+  test('Copy to Clipboard button copies JWT and provides visual feedback', async () => {
+    // Setup
+    const testToken = 'copy-this-token';
+    localStorage.setItem('jwt', testToken);
+    
+    // Mock navigator.clipboard.writeText
+    Object.assign(navigator, {
+      clipboard: {
+        writeText: jest.fn(() => Promise.resolve()),
+      },
+    });
+
+    // Use fake timers for setTimeout
+    jest.useFakeTimers();
+
+    // Execute script
+    eval(`(function(){ ${script} })()`);
+    document.dispatchEvent(new Event('DOMContentLoaded'));
+
+    const copyBtn = document.getElementById('copy-jwt-btn');
+    const originalText = copyBtn.textContent;
+
+    // Click the button
+    copyBtn.click();
+
+    // Flush promises to allow the .then() block to execute
+    await Promise.resolve();
+    await Promise.resolve();
+
+    // Assertions
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(testToken);
+    expect(copyBtn.textContent).toBe('Copied!');
+
+    // Advance timers to see text revert
+    jest.runAllTimers();
+    await Promise.resolve();
+    expect(copyBtn.textContent).toBe(originalText);
+
+    jest.useRealTimers();
   });
 
   test('Fetches profile data and updates DOM on success', async () => {
@@ -79,7 +121,7 @@ describe('aboutme.js', () => {
     localStorage.setItem('jwt', 'valid-token');
 
     // Execute script
-    eval(script);
+    eval(`(function(){ ${script} })()`);
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     // Wait for async operations
@@ -109,7 +151,7 @@ describe('aboutme.js', () => {
     localStorage.setItem('jwt', 'invalid-token');
 
     // Execute script
-    eval(script);
+    eval(`(function(){ ${script} })()`);
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     // Wait for async operations
@@ -126,7 +168,7 @@ describe('aboutme.js', () => {
     localStorage.removeItem('jwt');
 
     // Execute script
-    eval(script);
+    eval(`(function(){ ${script} })()`);
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     // Assertions
@@ -144,7 +186,7 @@ describe('aboutme.js', () => {
     localStorage.setItem('jwt', 'valid-token');
 
     // Execute script
-    eval(script);
+    eval(`(function(){ ${script} })()`);
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     // Reset fetch mock to track calls from button click
