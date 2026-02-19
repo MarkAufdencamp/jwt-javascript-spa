@@ -17,7 +17,7 @@ This plan outlines the steps to add a JWT display card and copy-to-clipboard fun
     - [ ] Ensure proper spacing between the two cards
 - [ ] Task: Conductor - User Manual Verification 'HTML/CSS Enhancements' (Protocol in workflow.md)
 
-## Phase 3: JavaScript Implementation (TDD)
+## Phase 3: JavaScript Implementation (TDD) [checkpoint: 759e621]
 - [x] Task: Write failing tests for JWT retrieval and display a6c1ccf
     - [ ] Test that `localStorage.getItem('jwt')` is called
     - [ ] Test that the JWT is rendered in the DOM
@@ -32,4 +32,4 @@ This plan outlines the steps to add a JWT display card and copy-to-clipboard fun
     - [ ] Use Clipboard API to copy the text
     - [ ] Implement visual feedback for the user
 - [x] Task: Verify all tests pass and coverage is >80% ed58adf
-- [~] Task: Conductor - User Manual Verification 'JavaScript Implementation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'JavaScript Implementation' (Protocol in workflow.md) 759e621
