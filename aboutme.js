@@ -16,6 +16,26 @@ if (refreshBtn) {
     });
 }
 
+function setupCopyButton() {
+    const copyBtn = document.getElementById('copy-jwt-btn');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+            const jwt = localStorage.getItem('jwt');
+            if (jwt && navigator.clipboard) {
+                const originalText = copyBtn.textContent;
+                navigator.clipboard.writeText(jwt).then(() => {
+                    copyBtn.textContent = 'Copied!';
+                    setTimeout(() => {
+                        copyBtn.textContent = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy JWT: ', err);
+                });
+            }
+        });
+    }
+}
+
 async function fetchProfile() {
     const jwt = localStorage.getItem('jwt');
     const errorEl = document.getElementById('profile-error');
@@ -24,6 +44,8 @@ async function fetchProfile() {
         window.open("index.html", "_self");
         return;
     }
+
+    displayJWT(jwt);
 
     try {
         const response = await fetch('http://localhost:3000/profile', {
@@ -51,4 +73,14 @@ async function fetchProfile() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', fetchProfile);
+function displayJWT(jwt) {
+    const jwtDisplay = document.getElementById('jwt-display');
+    if (jwtDisplay) {
+        jwtDisplay.textContent = jwt;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetchProfile();
+    setupCopyButton();
+});
