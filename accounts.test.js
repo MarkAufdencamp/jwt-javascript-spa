@@ -151,4 +151,106 @@ describe('accounts.js', () => {
     expect(tableBody.children[0].innerHTML).toContain('user1');
     expect(tableBody.children[0].innerHTML).toContain('user1@example.com');
   });
+
+  test('Account creation form elements exist', () => {
+    // Execute script
+    eval(script);
+    
+    // Trigger DOMContentLoaded
+    const event = new Event('DOMContentLoaded');
+    document.dispatchEvent(event);
+
+    expect(document.getElementById('username')).not.toBeNull();
+    expect(document.getElementById('email')).not.toBeNull();
+    expect(document.getElementById('password')).not.toBeNull();
+    expect(document.getElementById('confirm-password')).not.toBeNull();
+    expect(document.getElementById('save-account-btn')).not.toBeNull();
+  });
+
+  test('Shows error if passwords do not match on creation', async () => {
+    window.alert = jest.fn();
+    
+    // Execute script
+    eval(script);
+    
+    // Trigger DOMContentLoaded
+    const event = new Event('DOMContentLoaded');
+    document.dispatchEvent(event);
+
+    // Mock domain selection
+    const dropdown = document.getElementById('domain-select');
+    dropdown.value = '1';
+    dropdown.dispatchEvent(new Event('change'));
+
+    document.getElementById('username').value = 'testuser';
+    document.getElementById('email').value = 'test@example.com';
+    document.getElementById('password').value = 'password123';
+    document.getElementById('confirm-password').value = 'password456';
+
+    const form = document.getElementById('account-creation-form');
+    form.dispatchEvent(new Event('submit'));
+
+    expect(window.alert).toHaveBeenCalledWith('Passwords do not match.');
+    expect(global.fetch).not.toHaveBeenCalledWith(
+        expect.stringContaining('/accounts'),
+        expect.objectContaining({ method: 'POST' })
+    );
+  });
+
+  test('Successful account creation refreshes the list', async () => {
+    const mockDomains = [{ id: 1, domain: 'example', tld: 'com' }];
+    
+    global.fetch = jest.fn()
+      .mockImplementation((url, options) => {
+        if (url.endsWith('/domains')) {
+          return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve(mockDomains) });
+        }
+        if (url.includes('/accounts') && options?.method === 'POST') {
+          return Promise.resolve({ ok: true, status: 201, json: () => Promise.resolve({ id: 12, username: 'newuser' }) });
+        }
+        if (url.includes('/accounts') && (!options || options.method === 'GET')) {
+          return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve([]) });
+        }
+        return Promise.reject(new Error('Unknown URL'));
+      });
+
+    // Execute script
+    eval(script);
+    
+    // Trigger DOMContentLoaded
+    const event = new Event('DOMContentLoaded');
+    document.dispatchEvent(event);
+
+    await new Promise(resolve => setTimeout(resolve, 0));
+
+    const dropdown = document.getElementById('domain-select');
+    dropdown.value = '1';
+    dropdown.dispatchEvent(new Event('change'));
+
+    document.getElementById('username').value = 'newuser';
+    document.getElementById('email').value = 'new@example.com';
+    document.getElementById('password').value = 'secret';
+    document.getElementById('confirm-password').value = 'secret';
+
+    const form = document.getElementById('account-creation-form');
+    form.dispatchEvent(new Event('submit'));
+
+    await new Promise(resolve => setTimeout(resolve, 0));
+
+    // Verify POST was called
+    expect(global.fetch).toHaveBeenCalledWith(
+      expect.stringContaining('/domains/1/accounts'),
+      expect.objectContaining({ method: 'POST' })
+    );
+
+    // Verify list was refreshed (fetch called again for GET)
+    // First call: GET /domains
+    // Second call: GET /domains/1/accounts (after change)
+    // Third call: POST /domains/1/accounts
+    // Fourth call: GET /domains/1/accounts (after refresh)
+    const getAccountCalls = global.fetch.mock.calls.filter(call => 
+        call[0].includes('/accounts') && (!call[1] || call[1].method === 'GET')
+    );
+    expect(getAccountCalls.length).toBe(2);
+  });
 });
