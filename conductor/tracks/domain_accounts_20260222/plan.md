@@ -18,7 +18,7 @@
 
 ## Phase 4: Account Update (Update)
 - [x] Task: Write tests for editing an existing account. 47b356e
-- [ ] Task: Implement the edit mode and PUT logic in `accounts.js`.
+- [x] Task: Implement the edit mode and PUT logic in `accounts.js`. e276c10
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Account Update (Update)' (Protocol in workflow.md)
 
 ## Phase 5: Account Deletion (Delete)
