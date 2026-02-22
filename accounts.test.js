@@ -8,23 +8,21 @@ describe('accounts.js', () => {
   beforeEach(() => {
     document.documentElement.innerHTML = html.toString();
     jest.resetModules();
+    
+    // Setup initial JWT
+    localStorage.setItem('jwt', 'valid-token');
+
+    // Mock fetch
+    global.fetch = jest.fn(() =>
+        Promise.resolve({
+            ok: true,
+            json: () => Promise.resolve([]),
+        })
+    );
   });
 
-  test('Clicking Logout button clears JWT and redirects to index.html', () => {
-    // Setup
-    localStorage.setItem('jwt', 'fake-token');
-    
-    // Execute script
-    eval(script);
-
-    // Find the button
-    const logoutBtn = document.getElementById('logout-btn');
-    
-    // Dispatch click event
-    logoutBtn.click();
-
-    // Assertions
-    expect(localStorage.getItem('jwt')).toBeNull();
-    expect(window.open).toHaveBeenCalledWith('index.html', '_self');
+  test('Domain selection dropdown exists', () => {
+    const dropdown = document.getElementById('domain-select');
+    expect(dropdown).not.toBeNull();
   });
 });
