@@ -13,7 +13,7 @@
 
 ## Phase 3: Account Creation (Create)
 - [x] Task: Write tests for the account creation form, including password confirmation validation. ffd5179
-- [ ] Task: Implement the account creation form and POST logic in `accounts.js`.
+- [x] Task: Implement the account creation form and POST logic in `accounts.js`. acff92a
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Account Creation (Create)' (Protocol in workflow.md)
 
 ## Phase 4: Account Update (Update)
