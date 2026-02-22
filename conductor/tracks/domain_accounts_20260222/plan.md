@@ -7,7 +7,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation and Domain Selection' (Protocol in workflow.md) 7508cfe
 
 ## Phase 2: Account Listing (Read)
-- [ ] Task: Write tests for fetching and rendering accounts for a selected domain.
+- [x] Task: Write tests for fetching and rendering accounts for a selected domain. 2778ee1
 - [ ] Task: Implement `fetchAccounts` function and render the accounts table in `accounts.js`.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Account Listing (Read)' (Protocol in workflow.md)
 
