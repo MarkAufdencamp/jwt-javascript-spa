@@ -22,6 +22,6 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 4: Account Update (Update)' (Protocol in workflow.md) 65e80e1
 
 ## Phase 5: Account Deletion (Delete)
-- [ ] Task: Write tests for account deletion with confirmation.
+- [x] Task: Write tests for account deletion with confirmation. 272cfda
 - [ ] Task: Implement the DELETE logic and UI interaction in `accounts.js`.
 - [ ] Task: Conductor - User Manual Verification 'Phase 5: Account Deletion (Delete)' (Protocol in workflow.md)
