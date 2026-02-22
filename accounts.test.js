@@ -318,4 +318,55 @@ describe('accounts.js', () => {
       expect.objectContaining({ method: 'PUT' })
     );
   });
+
+  test('Clicking Delete triggers confirmation and handles DELETE', async () => {
+    window.confirm = jest.fn(() => true);
+    const mockDomains = [{ id: 1, domain: 'example', tld: 'com' }];
+    const mockAccounts = [{ id: 10, username: 'user1', email: 'user1@example.com' }];
+    
+    global.fetch = jest.fn()
+      .mockImplementation((url, options) => {
+        if (url.endsWith('/domains')) {
+          return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve(mockDomains) });
+        }
+        if (url.includes('/accounts/10') && options?.method === 'DELETE') {
+          return Promise.resolve({ ok: true, status: 204 });
+        }
+        if (url.includes('/accounts') && (!options?.method || options.method === 'GET')) {
+          return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve(mockAccounts) });
+        }
+        return Promise.reject(new Error(`Unknown URL: ${url} [${options?.method || 'GET'}]`));
+      });
+
+    // Execute script
+    eval(script);
+    
+    // Trigger DOMContentLoaded
+    const event = new Event('DOMContentLoaded');
+    document.dispatchEvent(event);
+
+    await new Promise(resolve => setTimeout(resolve, 0));
+
+    // Select domain
+    const dropdown = document.getElementById('domain-select');
+    dropdown.value = '1';
+    dropdown.dispatchEvent(new Event('change'));
+
+    await new Promise(resolve => setTimeout(resolve, 0));
+
+    // Find and click Delete button
+    const deleteBtn = document.querySelector('.delete-btn');
+    deleteBtn.click();
+
+    // Verify confirmation was shown
+    expect(window.confirm).toHaveBeenCalledWith('Are you sure you want to delete this account?');
+
+    await new Promise(resolve => setTimeout(resolve, 0));
+
+    // Verify DELETE was called
+    expect(global.fetch).toHaveBeenCalledWith(
+      expect.stringContaining('/domains/1/accounts/10'),
+      expect.objectContaining({ method: 'DELETE' })
+    );
+  });
 });
