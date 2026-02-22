@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'Authorization': `Bearer ${jwt}`
     });
 
+    // --- State ---
+    let currentDomainId = null;
+
     // --- DOM Elements ---
     const domainSelect = document.getElementById('domain-select');
     const logoutBtn = document.getElementById('logout-btn');
@@ -46,11 +49,44 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (error) {
             console.error('Error:', error);
-            // alert(error.message); // Commented out to avoid alert blocking in tests
+        }
+    };
+
+    // Fetch accounts for the selected domain
+    const fetchAccounts = async () => {
+        if (!currentDomainId) return;
+
+        try {
+            const response = await fetch(`${DOMAINS_API_URL}/${currentDomainId}/accounts`, { 
+                headers: getAuthHeaders() 
+            });
+
+            if (response.status === 401 || response.status === 403) {
+                logout();
+                return;
+            }
+            if (!response.ok) throw new Error('Failed to fetch accounts.');
+
+            const accounts = await response.json();
+            console.log('Accounts:', accounts);
+            // Rendering will be implemented in the next phase
+        } catch (error) {
+            console.error('Error:', error);
         }
     };
 
     // --- Event Listeners ---
+
+    // Handle domain selection change
+    domainSelect.addEventListener('change', (e) => {
+        currentDomainId = e.target.value;
+        if (currentDomainId) {
+            fetchAccounts();
+        } else {
+            // Clear accounts list if no domain selected
+            // This will be implemented in the next phase
+        }
+    });
 
     // Handle logout
     const logout = () => {
