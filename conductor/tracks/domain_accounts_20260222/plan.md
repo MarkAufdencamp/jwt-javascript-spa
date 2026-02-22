@@ -16,10 +16,10 @@
 - [x] Task: Implement the account creation form and POST logic in `accounts.js`. acff92a
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Account Creation (Create)' (Protocol in workflow.md) b0bbf57
 
-## Phase 4: Account Update (Update)
+## Phase 4: Account Update (Update) [checkpoint: 65e80e1]
 - [x] Task: Write tests for editing an existing account. 47b356e
 - [x] Task: Implement the edit mode and PUT logic in `accounts.js`. e276c10
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Account Update (Update)' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Account Update (Update)' (Protocol in workflow.md) 65e80e1
 
 ## Phase 5: Account Deletion (Delete)
 - [ ] Task: Write tests for account deletion with confirmation.
