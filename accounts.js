@@ -218,6 +218,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert(error.message);
             }
         }
+
+        // Delete button clicked
+        if (target.classList.contains('delete-btn')) {
+            if (confirm('Are you sure you want to delete this account?')) {
+                try {
+                    const response = await fetch(`${DOMAINS_API_URL}/${currentDomainId}/accounts/${id}`, {
+                        method: 'DELETE',
+                        headers: getAuthHeaders()
+                    });
+
+                    if (!response.ok) throw new Error('Failed to delete account.');
+                    fetchAccounts();
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert(error.message);
+                }
+            }
+        }
     });
 
     // Handle cancel button click
