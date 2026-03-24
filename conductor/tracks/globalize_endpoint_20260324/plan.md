@@ -10,8 +10,8 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Refactor HTML Injections' (Protocol in workflow.md) 34eccec
 
 ## Phase 3: Refactor JavaScript Modules (TDD)
-- [ ] Task: Update `index.test.js` and `signup.test.js` to mock/expect the global `CONFIG.API_BASE_URL`.
-- [ ] Task: Refactor `index.js` and `signup.js` to use `CONFIG.API_BASE_URL` and ensure tests pass.
+- [x] Task: Update `index.test.js` and `signup.test.js` to mock/expect the global `CONFIG.API_BASE_URL`. 095a478
+- [x] Task: Refactor `index.js` and `signup.js` to use `CONFIG.API_BASE_URL` and ensure tests pass. 095a478
 - [ ] Task: Update `aboutme.test.js` to mock/expect the global `CONFIG.API_BASE_URL`.
 - [ ] Task: Refactor `aboutme.js` to use `CONFIG.API_BASE_URL` and ensure tests pass.
 - [ ] Task: Update `accounts.test.js` and `domains.test.js` to mock/expect the global `CONFIG.API_BASE_URL`.
