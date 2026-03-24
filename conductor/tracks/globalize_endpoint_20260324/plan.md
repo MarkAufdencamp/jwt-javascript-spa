@@ -1,9 +1,9 @@
 # Implementation Plan: Globalize Endpoint URL
 
-## Phase 1: Global Configuration Foundation
+## Phase 1: Global Configuration Foundation [checkpoint: 14cbc2b]
 - [x] Task: Create `config.test.js` to assert `CONFIG.API_BASE_URL` exposes `http://localhost:3000` by default. 9d73e8d
 - [x] Task: Implement `config.js` to define `CONFIG` and satisfy the test. 9d73e8d
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Global Configuration Foundation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Global Configuration Foundation' (Protocol in workflow.md) 14cbc2b
 
 ## Phase 2: Refactor HTML Injections
 - [ ] Task: Update all HTML files (`index.html`, `signup.html`, `mainmenu.html`, `aboutme.html`, `accounts.html`, `domains.html`) to load `config.js` before module scripts.
