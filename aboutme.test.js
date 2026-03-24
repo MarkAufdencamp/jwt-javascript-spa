@@ -3,10 +3,14 @@ const path = require('path');
 
 const html = fs.readFileSync(path.resolve(__dirname, 'aboutme.html'), 'utf8');
 const script = fs.readFileSync(path.resolve(__dirname, 'aboutme.js'), 'utf8');
+const configScript = fs.readFileSync(path.resolve(__dirname, 'config.js'), 'utf8');
 
 describe('aboutme.js', () => {
   beforeEach(() => {
     document.documentElement.innerHTML = html.toString();
+    // Inject CONFIG and override for testing
+    eval(configScript);
+    window.CONFIG.API_BASE_URL = 'http://test-api.com';
     jest.useRealTimers();
     jest.resetModules();
   });
@@ -128,7 +132,7 @@ describe('aboutme.js', () => {
     await new Promise(resolve => setTimeout(resolve, 0));
 
     // Assertions
-    expect(global.fetch).toHaveBeenCalledWith('http://localhost:3000/profile', expect.objectContaining({
+    expect(global.fetch).toHaveBeenCalledWith(`${window.CONFIG.API_BASE_URL}/profile`, expect.objectContaining({
       headers: expect.objectContaining({
         'Authorization': 'Bearer valid-token'
       })

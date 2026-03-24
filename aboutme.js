@@ -50,6 +50,7 @@ function setupCopyButton() {
 async function fetchProfile() {
   const jwt = localStorage.getItem('jwt');
   const errorEl = document.getElementById('profile-error');
+  const apiBaseUrl = window.CONFIG?.API_BASE_URL || 'http://localhost:3000';
 
   if (!jwt) {
     window.open('index.html', '_self');
@@ -59,7 +60,7 @@ async function fetchProfile() {
   displayJWT(jwt);
 
   try {
-    const response = await fetch('http://localhost:3000/profile', {
+    const response = await fetch(`${apiBaseUrl}/profile`, {
       headers: {
         'Authorization': `Bearer ${jwt}`,
       },
