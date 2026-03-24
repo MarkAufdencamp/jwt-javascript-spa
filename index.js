@@ -8,11 +8,13 @@ loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   message.textContent = ''; // Clear previous messages
 
-  const username = loginForm.username.value;
-  const password = loginForm.password.value;
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  const apiBaseUrl = window.CONFIG?.API_BASE_URL || 'http://localhost:3000';
 
   try {
-    const res = await fetch('http://localhost:3000/authenticate', {
+    const res = await fetch(`${apiBaseUrl}/authenticate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
