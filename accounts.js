@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  const DOMAINS_API_URL = 'http://localhost:3000/domains';
+  const apiBaseUrl = window.CONFIG?.API_BASE_URL || 'http://localhost:3000';
+  const DOMAINS_API_URL = `${apiBaseUrl}/domains`;
   /**
    * Generates authorization headers for API requests.
    * @return {{'Content-Type': string, Authorization: string}}

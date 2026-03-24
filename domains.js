@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const API_URL = 'http://localhost:3000/domains'; // Using relative URL since it's on the same server
+    const apiBaseUrl = window.CONFIG?.API_BASE_URL || 'http://localhost:3000';
+    const API_URL = `${apiBaseUrl}/domains`;
     const getAuthHeaders = () => ({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${jwt}`

@@ -3,10 +3,14 @@ const path = require('path');
 
 const html = fs.readFileSync(path.resolve(__dirname, 'accounts.html'), 'utf8');
 const script = fs.readFileSync(path.resolve(__dirname, 'accounts.js'), 'utf8');
+const configScript = fs.readFileSync(path.resolve(__dirname, 'config.js'), 'utf8');
 
 describe('accounts.js', () => {
   beforeEach(() => {
     document.documentElement.innerHTML = html.toString();
+    // Inject CONFIG and override for testing
+    eval(configScript);
+    window.CONFIG.API_BASE_URL = 'http://test-api.com';
     jest.resetModules();
     
     // Setup initial JWT
@@ -96,7 +100,7 @@ describe('accounts.js', () => {
 
     // Verify fetch was called with the correct nested URL
     expect(global.fetch).toHaveBeenCalledWith(
-      expect.stringContaining('/domains/1/accounts'),
+      `${window.CONFIG.API_BASE_URL}/domains/1/accounts`,
       expect.any(Object)
     );
   });
@@ -242,7 +246,7 @@ describe('accounts.js', () => {
 
     // Verify POST was called
     expect(global.fetch).toHaveBeenCalledWith(
-      expect.stringContaining('/domains/1/accounts'),
+      `${window.CONFIG.API_BASE_URL}/domains/1/accounts`,
       expect.objectContaining({ method: 'POST' })
     );
 
@@ -314,7 +318,7 @@ describe('accounts.js', () => {
 
     // Verify PUT was called
     expect(global.fetch).toHaveBeenCalledWith(
-      expect.stringContaining('/domains/1/accounts/10'),
+      `${window.CONFIG.API_BASE_URL}/domains/1/accounts/10`,
       expect.objectContaining({ method: 'PUT' })
     );
   });
@@ -365,7 +369,7 @@ describe('accounts.js', () => {
 
     // Verify DELETE was called
     expect(global.fetch).toHaveBeenCalledWith(
-      expect.stringContaining('/domains/1/accounts/10'),
+      `${window.CONFIG.API_BASE_URL}/domains/1/accounts/10`,
       expect.objectContaining({ method: 'DELETE' })
     );
   });
