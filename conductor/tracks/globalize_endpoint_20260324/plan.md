@@ -5,9 +5,9 @@
 - [x] Task: Implement `config.js` to define `CONFIG` and satisfy the test. 9d73e8d
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Global Configuration Foundation' (Protocol in workflow.md) 14cbc2b
 
-## Phase 2: Refactor HTML Injections
+## Phase 2: Refactor HTML Injections [checkpoint: 34eccec]
 - [x] Task: Update all HTML files (`index.html`, `signup.html`, `mainmenu.html`, `aboutme.html`, `accounts.html`, `domains.html`) to load `config.js` before module scripts. d732c45
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Refactor HTML Injections' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Refactor HTML Injections' (Protocol in workflow.md) 34eccec
 
 ## Phase 3: Refactor JavaScript Modules (TDD)
 - [ ] Task: Update `index.test.js` and `signup.test.js` to mock/expect the global `CONFIG.API_BASE_URL`.
