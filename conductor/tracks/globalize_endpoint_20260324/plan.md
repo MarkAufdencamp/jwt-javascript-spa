@@ -14,6 +14,6 @@
 - [x] Task: Refactor `index.js` and `signup.js` to use `CONFIG.API_BASE_URL` and ensure tests pass. 095a478
 - [x] Task: Update `aboutme.test.js` to mock/expect the global `CONFIG.API_BASE_URL`. e7b2889
 - [x] Task: Refactor `aboutme.js` to use `CONFIG.API_BASE_URL` and ensure tests pass. e7b2889
-- [~] Task: Update `accounts.test.js` and `domains.test.js` to mock/expect the global `CONFIG.API_BASE_URL`.
-- [ ] Task: Refactor `accounts.js` and `domains.js` to use `CONFIG.API_BASE_URL` and ensure tests pass.
+- [x] Task: Update `accounts.test.js` and `domains.test.js` to mock/expect the global `CONFIG.API_BASE_URL`. d61eb03
+- [x] Task: Refactor `accounts.js` and `domains.js` to use `CONFIG.API_BASE_URL` and ensure tests pass. d61eb03
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Refactor JavaScript Modules (TDD)' (Protocol in workflow.md)
