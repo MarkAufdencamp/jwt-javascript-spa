@@ -25,10 +25,10 @@ Goal: Provide a Docker Compose setup for simplified local development and testin
     - [x] Ensure any changes to the local files are reflected (if volume mounting is used). (3f4abc7)
 - [x] **Task: Conductor - User Manual Verification 'Phase 2: Local Orchestration' (Protocol in workflow.md)** (bc6a3a7)
 
-## Phase 3: Deployment Compatibility
+## Phase 3: Deployment Compatibility [checkpoint: 13f0756]
 Goal: Ensure the new Docker configuration works seamlessly with the existing Kamal setup.
 
 - [x] **Task: Update `config/deploy.yml`** (498122d)
     - [x] Align the `service` and `image` names with the new Docker setup. (498122d)
     - [x] Ensure the `app_port` and other Kamal settings are correct for the Apache-based container. (498122d)
-- [ ] **Task: Conductor - User Manual Verification 'Phase 3: Deployment Compatibility' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 3: Deployment Compatibility' (Protocol in workflow.md)** (13f0756)
