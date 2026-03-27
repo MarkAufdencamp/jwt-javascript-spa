@@ -1,5 +1,5 @@
 const CONFIG = {
-  API_BASE_URL: 'http://jwt-javascript-spa.iluviya.net'
+  API_BASE_URL: 'https://jwt-demo.iluviya.net'
 };
 
 // Make CONFIG available globally
