@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/usr/local/apache2/htdocs/
+    # In some environments, the .dockerignore might prevent files needed during 
+    # the initial build if volume mounting is not used. 
+    # But since we're mounting the current directory, it will serve current files.
