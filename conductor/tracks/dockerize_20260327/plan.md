@@ -28,7 +28,7 @@ Goal: Provide a Docker Compose setup for simplified local development and testin
 ## Phase 3: Deployment Compatibility
 Goal: Ensure the new Docker configuration works seamlessly with the existing Kamal setup.
 
-- [ ] **Task: Update `config/deploy.yml`**
-    - [ ] Align the `service` and `image` names with the new Docker setup.
-    - [ ] Ensure the `app_port` and other Kamal settings are correct for the Apache-based container.
+- [x] **Task: Update `config/deploy.yml`** (498122d)
+    - [x] Align the `service` and `image` names with the new Docker setup. (498122d)
+    - [x] Ensure the `app_port` and other Kamal settings are correct for the Apache-based container. (498122d)
 - [ ] **Task: Conductor - User Manual Verification 'Phase 3: Deployment Compatibility' (Protocol in workflow.md)**
