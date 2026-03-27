@@ -6,5 +6,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Dockerize**
+- [x] **Track: Dockerize**
 *Link: [./tracks/dockerize_20260327/](./tracks/dockerize_20260327/)*
