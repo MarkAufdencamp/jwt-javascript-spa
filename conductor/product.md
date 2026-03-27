@@ -24,6 +24,7 @@ The project is a client-side web application designed to demonstrate JWT authent
 ## User Experience (UX)
 - **Minimalist & Functional:** A clean UI that prioritizes speed, clarity, and ease of use.
 - **Modern & Responsive:** Utilizing Bootstrap 5 principles to ensure a consistent look and feel across devices.
+- **Seamless Deployment:** Built-in support for containerization via Docker, ensuring identical runtime environments between development and production.
 - **Developer-Friendly:** Accessible console logging and clear, actionable error messages for easier debugging.
 
 ## Technical Strategy
