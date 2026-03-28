@@ -2,18 +2,33 @@
 /* CSS Document */
 h1 {
 	text-align: center;
+	font-size: 36pt;
 }
 h2 {
 	text-align: center;
+	font-family: Garamond;
+	font-size: 28pt;
 	clear: none;
 }
 .menu-row{
 	clear: both;
+	margin: none;
+	padding: none;
 }
 .menu-item {
-	width: 50%;
+	width: 35%;
 	float: left;
 	clear: none;
+	margin: none;
+	padding: none;
+}
+.menu-item-left {
+	margin-right: 5%;
+	margin-left: 10%;
+}
+.menu-item-right {
+	margin-left: 5%;
+	margin-right: 10%;
 }
 .menu-button {
 	width:100%;
