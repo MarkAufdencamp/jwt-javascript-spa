@@ -4,4 +4,3 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [Responsive Navigation Bar](./tracks/responsive_navbar_20260421/index.md)
