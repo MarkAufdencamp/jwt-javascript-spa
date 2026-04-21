@@ -16,10 +16,10 @@ describe('config.js', () => {
     expect(window.CONFIG).toBeDefined();
   });
 
-  test('CONFIG.API_BASE_URL is set to http://localhost:3000', () => {
+  test('CONFIG.API_BASE_URL is set correctly', () => {
     if (script) {
       eval(script);
     }
-    expect(window.CONFIG.API_BASE_URL).toBe('http://localhost:3000');
+    expect(window.CONFIG.API_BASE_URL).toBe('https://jwt-demo.iluviya.net');
   });
 });
