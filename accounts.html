@@ -10,15 +10,35 @@
 
 <body>
   <div class="container mt-5">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 rounded">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="mainmenu.html">JWT SPA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="accounts.html">Accounts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="domains.html">Domains</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="aboutme.html">About Me</a>
+            </li>
+          </ul>
+          <div class="d-flex gap-2">
+            <button id="refresh-domains-btn" class="btn btn-outline-info">Refresh Accounts</button>
+            <button id="logout-btn" class="btn btn-outline-danger">Logout</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1>Accounts</h1>
-      <div id="navbar">
-        <a href="mainmenu.html" class="btn btn-secondary">Main Menu</a>
-        <a href="domains.html" class="btn btn-secondary">Manage Domains</a>
-        <a href="hosts.html" class="btn btn-secondary">About Me</a>
-        <button id="refresh-domains-btn" class="btn btn-info">Refresh Accounts</button>
-        <button id="logout-btn" class="btn btn-danger">Logout</button>
-      </div>
     </div>
 
     <!-- Domain Selection -->
